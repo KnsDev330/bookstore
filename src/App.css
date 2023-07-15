@@ -1,0 +1,16 @@
+.mcontainer {
+   width: 100%;
+   max-width: 1280px !important;
+   margin-left: auto !important;
+   margin-right: auto !important;
+
+   padding-right: 20px !important;
+   padding-left: 20px !important;
+}
+
+@media screen and (min-width: 767px) {
+   .mcontainer {
+      padding-right: 40px !important;
+      padding-left: 40px !important;
+   }
+}

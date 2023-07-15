@@ -5,7 +5,30 @@ export default {
       "./src/**/*.{js,ts,jsx,tsx}",
    ],
    theme: {
-      extend: {},
+      extend: {
+         colors: {
+            'primary': '#F65D4E',
+            'primary-hover': '#f4402f',
+            'border': '#E6E6E6',
+            'text': '#444444',
+            'accent': '#000000',
+            'lighter': '#999999'
+         },
+         fontSize: {
+            heading: '36px',
+            footerHeading: '16px'
+         },
+         fontWeight: {
+            heading: 600
+         },
+         spacing: {
+            heading: '2px'
+         },
+         screens: {
+            xss: '320px',
+            xs: '480px'
+         }
+      },
    },
    plugins: [],
 }
