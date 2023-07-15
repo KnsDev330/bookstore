@@ -5,12 +5,12 @@ import TopBar from "../Components/Shared/TopBar";
 
 const Layout = ({ children }: { children: ReactNode }) => {
    return (
-      <>
+      <div className="flex flex-col min-h-screen">
          <TopBar />
          <Header />
          {children}
          <Footer />
-      </>
+      </div>
    );
 };
 

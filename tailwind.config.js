@@ -27,6 +27,9 @@ export default {
          screens: {
             xss: '320px',
             xs: '480px'
+         },
+         backgroundColor: {
+            'primary-light': '#ffcec9'
          }
       },
    },

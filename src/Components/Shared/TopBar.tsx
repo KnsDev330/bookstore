@@ -6,7 +6,7 @@ import { AiOutlineTwitter, AiFillInstagram } from 'react-icons/ai';
 
 const TopBar: FC = (): JSX.Element => {
    return (
-      <div className='w-full bg-white border-bottom border-red-400'>
+      <div className='w-full bg-white border-b border-border'>
          <div className="mcontainer text-black h-10 flex items-center justify-between">
             <div className='flex items-center gap-5'>
                <p className='text-xs font-semibold underline'>
