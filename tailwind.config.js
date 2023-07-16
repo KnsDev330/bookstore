@@ -12,10 +12,10 @@ export default {
             'border': '#E6E6E6',
             'text': '#444444',
             'accent': '#000000',
-            'lighter': '#999999'
+            'lighter': '#999999',
          },
          fontSize: {
-            heading: '36px',
+            heading: '32px',
             footerHeading: '16px'
          },
          fontWeight: {
@@ -30,6 +30,9 @@ export default {
          },
          backgroundColor: {
             'primary-light': '#ffcec9'
+         },
+         fill: {
+            rating: '#fa8c17'
          }
       },
    },

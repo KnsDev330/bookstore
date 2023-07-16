@@ -16,7 +16,7 @@ const Header = () => {
             </div>
 
             {/* search */}
-            <div className="search-section">
+            <div className="search-section hidden xs:block">
                <div className="search-container relative">
                   <input type="text"
                      id="homeBookSearchBar"
