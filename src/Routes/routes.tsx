@@ -2,18 +2,19 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 
 import { createBrowserRouter } from 'react-router-dom';
-import Home from '../Pages/Home';
+import HomePage from '../Pages/Home';
 import Login from '../Pages/Login';
 import Resgister from '../Pages/Resgister';
 import NotFound from '../Pages/NotFound';
 import Layout from '../Pages/Layout';
 import '../App.css';
+import Books from '../Components/Books/Books';
 
 
 const routes = createBrowserRouter([
    {
       path: '/',
-      element: <Layout><Home /></Layout>
+      element: <Layout><HomePage /></Layout>
    },
    {
       path: '/login',
@@ -22,6 +23,10 @@ const routes = createBrowserRouter([
    {
       path: '/register',
       element: <Layout><Resgister /></Layout>,
+   },
+   {
+      path: '/books',
+      element: <Layout><Books /></Layout>,
    },
    {
       path: '*',

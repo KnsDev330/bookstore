@@ -3,16 +3,18 @@ import Badge from "./Badge";
 import { BsCart4 } from "react-icons/bs";
 import { MdOutlineAccountCircle } from "react-icons/md";
 import VerticalLine from "./VerticalLine";
+import { Link } from "react-router-dom";
+import { BiAddToQueue, BiSolidAddToQueue, BiSolidBookAdd } from "react-icons/bi";
 
 const Header = () => {
 
    return (
-      <div className="sticky bg-white h-16 items-center flex text-accent">
+      <div className="sticky top-0 h-16 items-center flex text-accent bg-gray-100 z-[1]">
          <div className="mcontainer flex justify-between     ">
 
             {/* logo */}
             <div className="logo">
-               <img src="/logo-1.svg" alt="" />
+               <Link to='/'><img src="/logo-1.svg" alt="" /></Link>
             </div>
 
             {/* search */}
@@ -22,7 +24,7 @@ const Header = () => {
                      id="homeBookSearchBar"
                      className="
                         w-80
-                        bg-white border-b outline-none focus:border-primary duration-300
+                        bg-gray-100 border-b outline-none focus:border-primary duration-300
                      "
                      placeholder="Search books"
                   />
@@ -33,8 +35,7 @@ const Header = () => {
             <div className="utility-sections flex gap-4">
 
                <div className="wishlist-section relative cursor-pointer">
-                  <AiOutlineHeart className='text-2xl' />
-                  <Badge count={0} />
+                  <BiAddToQueue className='text-2xl' />
                </div>
 
                <VerticalLine />

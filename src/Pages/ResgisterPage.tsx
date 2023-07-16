@@ -1,5 +1,5 @@
 
-const Resgister = () => {
+const ResgisterPage = () => {
    return (
       <div>
          Resgister
@@ -7,4 +7,4 @@ const Resgister = () => {
    );
 };
 
-export default Resgister;
+export default ResgisterPage;
