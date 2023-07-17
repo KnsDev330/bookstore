@@ -1,9 +1,12 @@
+import Layout from "./Layout";
 
 const LoginPage = () => {
    return (
-      <div>
-         Login
-      </div>
+      <Layout>
+         <div>
+            Login
+         </div>
+      </Layout>
    );
 };
 

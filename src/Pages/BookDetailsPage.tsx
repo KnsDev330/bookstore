@@ -1,9 +1,12 @@
+import Layout from "./Layout";
 
 const BookDetailsPage = () => {
    return (
-      <div>
-         BookDetails
-      </div>
+      <Layout>
+         <div>
+            BookDetails
+         </div>
+      </Layout>
    );
 };
 

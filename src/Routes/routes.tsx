@@ -2,35 +2,34 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 
 import { createBrowserRouter } from 'react-router-dom';
-import HomePage from '../Pages/Home';
-import Login from '../Pages/Login';
-import Resgister from '../Pages/Resgister';
-import NotFound from '../Pages/NotFound';
-import Layout from '../Pages/Layout';
 import '../App.css';
-import Books from '../Components/Books/Books';
+import HomePage from '../Pages/HomePage';
+import LoginPage from '../Pages/LoginPage';
+import ResgisterPage from '../Pages/ResgisterPage';
+import BooksPage from '../Pages/BooksPage';
+import NotFoundPage from '../Pages/NotFoundPage';
 
 
 const routes = createBrowserRouter([
    {
       path: '/',
-      element: <Layout><HomePage /></Layout>
+      element: <HomePage />
    },
    {
       path: '/login',
-      element: <Layout><Login /></Layout>,
+      element: <LoginPage />,
    },
    {
       path: '/register',
-      element: <Layout><Resgister /></Layout>,
+      element: <ResgisterPage />,
    },
    {
       path: '/books',
-      element: <Layout><Books /></Layout>,
+      element: <BooksPage />,
    },
    {
       path: '*',
-      element: <Layout><NotFound /></Layout>,
+      element: <NotFoundPage />,
    }
 ]);
 

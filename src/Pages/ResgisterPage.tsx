@@ -1,9 +1,12 @@
+import Layout from "./Layout";
 
 const ResgisterPage = () => {
    return (
-      <div>
-         Resgister
-      </div>
+      <Layout>
+         <div>
+            Resgister
+         </div>
+      </Layout>
    );
 };
 
