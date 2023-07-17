@@ -43,8 +43,8 @@ const BookHr: FC<Props> = ({ book }): JSX.Element => {
             </div>
             <h3 className="author text-lighter text-xs hover:underline hover:text-blue-600"><Link to={`/search/author/${book.author}`}>{book.author}</Link></h3>
             <div className="price-container flex gap-2 items-center">
-               <h2 className={`price text-xl text-primary font-bold ${book.oldPrice ? 'text-green-600' : ''}`}>${book.price}</h2>
-               <h2 className={`old-price text-sm  font-bold line-through ${!book.oldPrice ? 'hidden' : 'text-primary'}`}>${book.oldPrice}</h2>
+               <h2 className={`price text-xl font-bold ${book.oldPrice ? 'text-green-600' : 'text-accent'}`}>${book.price}</h2>
+               <h2 className={`old-price text-sm font-bold line-through ${!book.oldPrice ? 'hidden' : 'text-lighter'}`}>${book.oldPrice}</h2>
             </div>
          </div>
       </div>

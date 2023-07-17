@@ -17,7 +17,7 @@ const NewListings = () => {
             <div className="flex w-full justify-between items-center gap-10">
                <h1 className="font-heading text-heading">New Listings</h1>
                <HorizontalLine className="flex-grow" />
-               <Link to='/books'><Button text='View All' variant='primary' iconRight={<BiChevronRight class="text-xl" />} /></Link>
+               <Link to='/books'><Button text='View All' variant='primary' iconRight={<BiChevronRight className="text-xl" />} /></Link>
             </div>
             <div>
                <h2>Filters:</h2>
