@@ -1,0 +1,1 @@
+export const SERVER_URL = `http://localhost:3032/api/v1`;

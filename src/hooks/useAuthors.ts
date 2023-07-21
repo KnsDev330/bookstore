@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { IBook } from "../types/Book";
+import IBook from "../types/Book";
 
 const useAuthors = (books: IBook[]): { authors: string[] } => {
    const [authors, setAuthors] = useState<string[]>([]);

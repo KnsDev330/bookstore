@@ -1,10 +1,10 @@
-export interface IBook {
+export default interface IBook {
    _id: string;
+   user: string;
    title: string;
    author: string;
    genre: string;
-   rating: number;
-   price: number;
-   oldPrice?: number;
-   image: string;
+   publicationDate: number;
+   createdAt: string;
+   updatedAt: string;
 }

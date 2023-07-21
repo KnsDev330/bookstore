@@ -1,9 +1,9 @@
 import Badge from "./Badge";
-import { BsCart4 } from "react-icons/bs";
 import { MdOutlineAccountCircle } from "react-icons/md";
 import VerticalLine from "./VerticalLine";
 import { Link } from "react-router-dom";
 import { BiAddToQueue } from "react-icons/bi";
+import { AiOutlineRead } from "react-icons/ai";
 
 const Header = () => {
 
@@ -40,14 +40,14 @@ const Header = () => {
                <VerticalLine />
 
                <div className="cart-section relative cursor-pointer">
-                  <BsCart4 className='text-2xl' />
+                  <AiOutlineRead className='text-2xl mt-[2px]' />
                   <Badge count={0} />
                </div>
 
                <VerticalLine />
 
                <div className="account-section relative cursor-pointer">
-                  <MdOutlineAccountCircle className='text-2xl' />
+                  <Link to='/login'><MdOutlineAccountCircle className='text-2xl' /></Link>
                </div>
 
             </div>

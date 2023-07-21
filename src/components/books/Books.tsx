@@ -1,16 +1,20 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+
 import { Link } from "react-router-dom";
 import HorizontalLine from "../shared/HorizontalLine";
 import Button from "../Button";
 import { BiChevronRight } from "react-icons/bi";
 import { useEffect } from "react";
-import { IBook } from "../../types/Book";
 import BookHr from "../BookHr";
 import useAuthors from "../../hooks/useAuthors";
-import { useGetAllBooksQuery } from "../../redux/api/bookSlice";
+import { useGetAllBooksQuery } from "../../redux/api/bookApi";
+import IBook from "../../types/Book";
 
 const Books = () => {
-   const { data: books, isLoading, isError } = useGetAllBooksQuery(undefined);
-   const { authors } = useAuthors(books!);
+   const { data, isLoading, isError, error } = useGetAllBooksQuery();
+   console.log({ data, isLoading, isError, error });
+
+   const { authors } = useAuthors(data?.data as IBook[] || []);
 
    useEffect(() => console.log('authors', authors), [authors]);
 
@@ -35,7 +39,7 @@ const Books = () => {
             </div>
          </div>
          <div className="books grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 gap-y-8">
-            {books.map((book: IBook) => <BookHr key={book.title} book={book} />)}
+            {(data?.data as IBook[] || []).map((book: IBook) => <BookHr key={book.title} book={book} />)}
          </div>
       </div>
    );
