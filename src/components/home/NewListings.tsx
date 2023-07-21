@@ -1,10 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
-import HorizontalLine from "../Shared/HorizontalLine";
+import HorizontalLine from "../shared/HorizontalLine";
 import Button from "../Button";
 import { BiChevronRight } from "react-icons/bi";
 import { useState } from "react";
-import { IBook } from "../../Types/Book";
-import booksList from "../../Utils/DummyData/books";
+import { IBook } from "../../types/Book";
+import booksList from "../../utils/dummyData/books";
 import BookHr from "../BookHr";
 
 const NewListings = () => {

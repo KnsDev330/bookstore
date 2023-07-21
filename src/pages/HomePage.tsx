@@ -1,4 +1,4 @@
-import NewListings from "../Components/Home/NewListings";
+import NewListings from "../components/home/NewListings";
 import Layout from "./Layout";
 
 const HomePage = () => {

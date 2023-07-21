@@ -1,17 +1,16 @@
-import { Link, useNavigate } from "react-router-dom";
-import HorizontalLine from "../Shared/HorizontalLine";
+import { Link } from "react-router-dom";
+import HorizontalLine from "../shared/HorizontalLine";
 import Button from "../Button";
 import { BiChevronRight } from "react-icons/bi";
-import { useEffect, useState } from "react";
-import { IBook } from "../../Types/Book";
-import booksList from "../../Utils/DummyData/books";
+import { useEffect } from "react";
+import { IBook } from "../../types/Book";
 import BookHr from "../BookHr";
-import useAuthors from "../../Hooks/useAuthors";
+import useAuthors from "../../hooks/useAuthors";
+import { useGetAllBooksQuery } from "../../redux/api/bookSlice";
 
 const Books = () => {
-   const [books] = useState<IBook[]>(booksList);
-   const { authors } = useAuthors(books);
-   const navigate = useNavigate();
+   const { data: books, isLoading, isError } = useGetAllBooksQuery(undefined);
+   const { authors } = useAuthors(books!);
 
    useEffect(() => console.log('authors', authors), [authors]);
 

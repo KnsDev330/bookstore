@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { IBook } from "../Types/Book";
+import { IBook } from "../types/Book";
 import Rating from "react-rating";
 import { BsStar, BsStarFill } from "react-icons/bs";
 import { Link } from "react-router-dom";

@@ -1,4 +1,4 @@
-import { IBook } from "../../Types/Book";
+import { IBook } from "../../types/Book";
 
 const booksList: IBook[] = [
    {

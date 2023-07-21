@@ -3,11 +3,11 @@
 
 import { createBrowserRouter } from 'react-router-dom';
 import '../App.css';
-import HomePage from '../Pages/HomePage';
-import LoginPage from '../Pages/LoginPage';
-import ResgisterPage from '../Pages/ResgisterPage';
-import BooksPage from '../Pages/BooksPage';
-import NotFoundPage from '../Pages/NotFoundPage';
+import HomePage from '../pages/HomePage';
+import LoginPage from '../pages/LoginPage';
+import ResgisterPage from '../pages/ResgisterPage';
+import BooksPage from '../pages/BooksPage';
+import NotFoundPage from '../pages/NotFoundPage';
 
 
 const routes = createBrowserRouter([

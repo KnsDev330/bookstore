@@ -1,4 +1,4 @@
-import Books from "../Components/Books/Books";
+import Books from "../components/books/Books";
 import Layout from "./Layout";
 
 const BooksPage = () => {

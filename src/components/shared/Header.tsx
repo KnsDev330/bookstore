@@ -1,16 +1,15 @@
-import { AiOutlineHeart } from "react-icons/ai";
 import Badge from "./Badge";
 import { BsCart4 } from "react-icons/bs";
 import { MdOutlineAccountCircle } from "react-icons/md";
 import VerticalLine from "./VerticalLine";
 import { Link } from "react-router-dom";
-import { BiAddToQueue, BiSolidAddToQueue, BiSolidBookAdd } from "react-icons/bi";
+import { BiAddToQueue } from "react-icons/bi";
 
 const Header = () => {
 
    return (
       <div className="sticky top-0 h-16 items-center flex text-accent bg-gray-100 z-[1]">
-         <div className="mcontainer flex justify-between     ">
+         <div className="mcontainer flex justify-between">
 
             {/* logo */}
             <div className="logo">
