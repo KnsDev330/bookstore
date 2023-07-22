@@ -4,11 +4,14 @@ import VerticalLine from "./VerticalLine";
 import { Link } from "react-router-dom";
 import { BiAddToQueue } from "react-icons/bi";
 import { AiOutlineRead } from "react-icons/ai";
+import { useAppSelector } from "../../redux/hook";
 
 const Header = () => {
 
+   const { user } = useAppSelector(state => state.user);
+
    return (
-      <div className="sticky top-0 h-16 items-center flex text-accent bg-gray-100 z-[1]">
+      <div className="sticky top-0 h-16 items-center flex text-accent bg-white z-[1] border-b">
          <div className="mcontainer flex justify-between">
 
             {/* logo */}
@@ -23,7 +26,7 @@ const Header = () => {
                      id="homeBookSearchBar"
                      className="
                         w-80
-                        bg-gray-100 border-b outline-none focus:border-primary duration-300
+                        bg-inherit border-b outline-none focus:border-primary duration-300
                      "
                      placeholder="Search books"
                   />
@@ -47,7 +50,9 @@ const Header = () => {
                <VerticalLine />
 
                <div className="account-section relative cursor-pointer">
-                  <Link to='/login'><MdOutlineAccountCircle className='text-2xl' /></Link>
+                  {!user ? <Link to='/login'><MdOutlineAccountCircle className='text-2xl' /></Link> :
+                     <img src="/dps/1.svg" alt="" className="w-7 bg-white rounded-full border" draggable={false} />
+                  }
                </div>
 
             </div>

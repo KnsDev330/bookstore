@@ -15,7 +15,7 @@ const ErrorBox: FC<{ error: string }> = ({ error }): JSX.Element => {
          setTitle(error);
    }, [error]);
    return (
-      <div className="errors bg-red-200 mt-4 text-red-400 px-3 py-2 rounded">
+      <div className="errors bg-red-100 mt-4 text-red-500 px-3 py-2 rounded border border-red-200">
          <span className="text-sm">{title}</span>
          <ul className="text-xs list-disc list-inside">{errors.map(e => <li key={e}>{e}</li>)}</ul>
       </div>

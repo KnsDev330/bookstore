@@ -13,9 +13,9 @@ export interface ILoginCredential {
 }
 
 export interface ISignupCredential {
-   name: string;
-   email: string;
-   password: string;
+   name?: string;
+   email?: string;
+   password?: string;
 }
 
 export interface IServerResponse {
