@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
+
 import { FC, useEffect } from "react";
 import Layout from "./Layout";
 import { useForm } from 'react-hook-form';
@@ -7,6 +9,7 @@ import { useAppDispatch, useAppSelector } from "../redux/hook";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import { loginUser } from "../redux/features/userSlice";
+import ErrorBox from "../components/shared/ErrorBox";
 
 interface LoginFormInputs {
    email: string;
@@ -22,13 +25,13 @@ const LoginPage: FC<Props> = ({ className }): JSX.Element => {
       formState: { errors },
    } = useForm<LoginFormInputs>();
 
-   const { user, isLoading } = useAppSelector((state) => state.user);
+   const { user, isLoading, error } = useAppSelector((state) => state.user);
    const dispatch = useAppDispatch();
 
    const navigate = useNavigate();
    const onSubmit = (data: LoginFormInputs) => {
       console.log(data);
-      dispatch(loginUser({ email: data.email, password: data.password })).catch(e => console.log(e))
+      dispatch(loginUser({ email: data.email, password: data.password }))
    };
 
    useEffect(() => {
@@ -46,6 +49,7 @@ const LoginPage: FC<Props> = ({ className }): JSX.Element => {
                         autoCapitalize="none"
                         autoComplete="email"
                         autoCorrect="off"
+                        defaultValue='me7@kns.dev'
                         className="outline-none rounded h-10 border focus:border-primary duration-300 px-3"
                         {...register('email', { required: 'Email is required' })}
                      />
@@ -57,16 +61,19 @@ const LoginPage: FC<Props> = ({ className }): JSX.Element => {
                         type="password"
                         autoCapitalize="none"
                         autoComplete="password"
+                        defaultValue='12345678'
                         className="outline-none rounded h-10 border focus:border-primary duration-300 px-3"
                         {...register('password', { required: 'Password is required' })}
                      />
                      {errors.password && <p className="text-xs text-red-500">{errors.password.message}</p>}
                   </div>
-                  <Button text="Login" className="w-40 mx-auto mt-6" variant="primary" />
+
+                  {error && <ErrorBox error={error} />}
+                  <Button text="Login" className="w-40 mx-auto mt-6" variant="primary" isLoading={isLoading} />
 
                   <div className="flex flex-col justify-center items-center mt-5">
                      <Link to='/register' className="group text-xs">New here? <span className="group-hover:underline text-blue-500">Register</span></Link>
-                     <Link to='/register' className="group text-xs">Forgot password? <span className="group-hover:underline text-blue-500">Reset</span></Link>
+                     <Link to='/reset' className="group text-xs">Forgot password? <span className="group-hover:underline text-blue-500">Reset</span></Link>
                   </div>
                </div>
             </form>

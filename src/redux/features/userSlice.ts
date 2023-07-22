@@ -25,6 +25,8 @@ export const loginUser = createAsyncThunk(
    'user/loginUser',
    async ({ email, password }: ILoginCredential) => {
       const data = await MyAxios.post(`/auth/login`, null, { email, password });
+      console.log({ data });
+
       if (!data?.code) throw new Error(`No response found from server`);
       if (!data.ok) throw new Error(getErrors(data));
       return data.data as IUser;
