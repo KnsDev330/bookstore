@@ -2,27 +2,26 @@
 
 import axios, { AxiosRequestConfig } from "axios";
 import { SERVER_URL } from "../config";
-import { IServerResponse } from "../redux/features/interfaces";
 
 const MyAxios = {
-   get: async (url: string, headers: null | string)
-      : Promise<IServerResponse | null> => await MyAxios.getData('GET', url, headers, ""),
+   get: async <ResponseDataType>(url: string, headers: null | string)
+      : Promise<ResponseDataType | null> => await MyAxios.getData('GET', url, headers, ""),
 
-   delete: async (url: string, headers: null | string)
-      : Promise<IServerResponse | null> => await MyAxios.getData('DELETE', url, headers, ""),
+   delete: async <ResponseDataType>(url: string, headers: null | string)
+      : Promise<ResponseDataType | null> => await MyAxios.getData('DELETE', url, headers, ""),
 
-   post: async (url: string, headers: null | string, body: any = null)
-      : Promise<IServerResponse | null> => await MyAxios.getData('POST', url, headers, body),
+   post: async <ResponseDataType>(url: string, headers: null | string, body: any = null)
+      : Promise<ResponseDataType | null> => await MyAxios.getData('POST', url, headers, body),
 
-   patch: async (url: string, headers: null | string, body: any = null)
-      : Promise<IServerResponse | null> => await MyAxios.getData('PATCH', url, headers, body),
+   patch: async <ResponseDataType>(url: string, headers: null | string, body: any = null)
+      : Promise<ResponseDataType | null> => await MyAxios.getData('PATCH', url, headers, body),
 
-   getData: async (
+   getData: async <ResponseDataType>(
       method: string,
       url: string,
       headers: null | string,
       body: any
-   ): Promise<IServerResponse | null> => {
+   ): Promise<ResponseDataType | null> => {
       try {
          const jwt = localStorage.getItem("jwt");
          const config: AxiosRequestConfig = { url: SERVER_URL + url, method };

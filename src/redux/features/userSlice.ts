@@ -1,8 +1,20 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { ILoginCredential, ISignupCredential, IUserState } from './interfaces';
+import { IUserState } from './interfaces';
 import MyAxios from '../../utils/MyAxios';
 import { getErrors } from '../../utils/Utils';
-import IUser from '../../types/IUser';
+import { ILoginResponse } from '../../interfaces/ServerResponse';
+
+
+export interface ILoginCredential {
+   email: string;
+   password: string;
+}
+export interface ISignupCredential {
+   name?: string;
+   email?: string;
+   password?: string;
+}
 
 const initialState: IUserState = {
    user: null,
@@ -14,22 +26,26 @@ const initialState: IUserState = {
 export const createUser = createAsyncThunk(
    'user/createUser',
    async ({ name, email, password }: ISignupCredential) => {
-      const data = await MyAxios.post(`/auth/signup`, null, { name, email, password });
+      const data = await MyAxios.post<ILoginResponse>(`/auth/signup`, null, { name, email, password });
       if (!data?.code) throw new Error(`No response found from server`);
       if (!data.ok) throw new Error(getErrors(data));
-      return data.data as IUser;
+      if (!data.data?.user || !data.data?.accessToken)
+         throw new Error(`User data or Access token not found in response`);
+      localStorage.setItem('jwt', data.data.accessToken);
+      return data.data.user;
    }
 );
 
 export const loginUser = createAsyncThunk(
    'user/loginUser',
    async ({ email, password }: ILoginCredential) => {
-      const data = await MyAxios.post(`/auth/login`, null, { email, password });
-      console.log({ data });
-
+      const data = await MyAxios.post<ILoginResponse>(`/auth/login`, null, { email, password });
       if (!data?.code) throw new Error(`No response found from server`);
       if (!data.ok) throw new Error(getErrors(data));
-      return data.data as IUser;
+      if (!data.data?.user || !data.data?.accessToken)
+         throw new Error(`User data or Access token not found in response`);
+      localStorage.setItem('jwt', data.data.accessToken);
+      return data.data.user;
    }
 );
 
