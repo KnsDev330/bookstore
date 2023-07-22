@@ -17,6 +17,11 @@ export interface IUser {
    name: string;
    email: string;
    dp: string;
+   counters: {
+      reads: number;
+      books: number;
+      reviews: number;
+   }
    createdAt: string;
    updatedAt: string;
 }

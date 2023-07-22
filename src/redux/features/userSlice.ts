@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { IUserState } from './interfaces';
 import MyAxios from '../../utils/MyAxios';
 import { getErrors } from '../../utils/Utils';
-import { ILoginResponse } from '../../interfaces/ServerResponse';
+import { IGetUserResponse, ILoginResponse } from '../../interfaces/ServerResponse';
+import { IUser } from '../../interfaces/interfaces';
 
 
 export interface ILoginCredential {
@@ -49,47 +50,59 @@ export const loginUser = createAsyncThunk(
    }
 );
 
+export const getUserFromLocalStorage = createAsyncThunk(
+   'user/getUserFromLocalStorage',
+   async () => {
+      const data = await MyAxios.get<IGetUserResponse>(`/users/me`);
+      if (!data?.code) throw new Error(`No response found from server`);
+      if (!data.ok) throw new Error(getErrors(data));
+      if (!data.data) throw new Error(`User data not found in response`);
+      return data.data;
+   }
+);
+
+
+
 const userSlice = createSlice({
    name: 'user ',
    initialState,
-   reducers: {},
+   reducers: {
+
+   },
    extraReducers: (builder) => {
       builder
-         .addCase(createUser.pending, (state) => {
-            state.user = null;
-            state.isLoading = true;
-            state.isError = false;
-            state.error = null;
-         })
-         .addCase(createUser.fulfilled, (state, action) => {
-            state.user = action.payload;
-            state.isLoading = false;
-            state.isError = false;
-            state.error = null;
-         })
-         .addCase(createUser.rejected, (state, action) => {
-            state.user = null;
-            state.isLoading = false;
-            state.isError = true;
-            state.error = action.error.message!;
-         })
-         .addCase(loginUser.pending, (state) => {
-            state.isLoading = true;
-            state.isError = false;
-            state.error = null;
-         })
-         .addCase(loginUser.fulfilled, (state, action) => {
-            state.user = action.payload;
-            state.isLoading = false;
-         })
-         .addCase(loginUser.rejected, (state, action) => {
-            state.user = null;
-            state.isLoading = false;
-            state.isError = true;
-            state.error = action.error.message!;
-         });
+         .addCase(getUserFromLocalStorage.pending, (state) => PendingState(state))
+         .addCase(getUserFromLocalStorage.fulfilled, (state, action) => FullfilledState(state, action))
+         .addCase(getUserFromLocalStorage.rejected, (state, action) => RejectedState(state, action))
+
+         .addCase(createUser.pending, (state) => PendingState(state))
+         .addCase(createUser.fulfilled, (state, action) => FullfilledState(state, action))
+         .addCase(createUser.rejected, (state, action) => RejectedState(state, action))
+
+         .addCase(loginUser.pending, (state) => PendingState(state))
+         .addCase(loginUser.fulfilled, (state, action) => FullfilledState(state, action))
+         .addCase(loginUser.rejected, (state, action) => RejectedState(state, action))
    },
 });
 
+function PendingState(state: IUserState) {
+   state.user = null;
+   state.isLoading = true;
+   state.isError = false;
+   state.error = null;
+}
+function FullfilledState(state: IUserState, action: PayloadAction<IUser>) {
+   state.user = action.payload;
+   state.isLoading = false;
+   state.isError = false;
+   state.error = null;
+}
+function RejectedState(state: IUserState, action: any) {
+   state.user = null;
+   state.isLoading = false;
+   state.isError = true;
+   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+   state.error = action.error.message!;
+}
 
 export default userSlice.reducer;

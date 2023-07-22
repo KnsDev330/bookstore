@@ -4,16 +4,16 @@ import axios, { AxiosRequestConfig } from "axios";
 import { SERVER_URL } from "../config";
 
 const MyAxios = {
-   get: async <ResponseDataType>(url: string, headers: null | string)
+   get: async <ResponseDataType>(url: string, headers: null | string = null)
       : Promise<ResponseDataType | null> => await MyAxios.getData('GET', url, headers, ""),
 
-   delete: async <ResponseDataType>(url: string, headers: null | string)
+   delete: async <ResponseDataType>(url: string, headers: null | string = null)
       : Promise<ResponseDataType | null> => await MyAxios.getData('DELETE', url, headers, ""),
 
-   post: async <ResponseDataType>(url: string, headers: null | string, body: any = null)
+   post: async <ResponseDataType>(url: string, headers: null | string = null, body: any = null)
       : Promise<ResponseDataType | null> => await MyAxios.getData('POST', url, headers, body),
 
-   patch: async <ResponseDataType>(url: string, headers: null | string, body: any = null)
+   patch: async <ResponseDataType>(url: string, headers: null | string = null, body: any = null)
       : Promise<ResponseDataType | null> => await MyAxios.getData('PATCH', url, headers, body),
 
    getData: async <ResponseDataType>(

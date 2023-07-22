@@ -8,6 +8,11 @@ import LoginPage from '../pages/LoginPage';
 import ResgisterPage from '../pages/ResgisterPage';
 import BooksPage from '../pages/BooksPage';
 import NotFoundPage from '../pages/NotFoundPage';
+import DashboardPage from '../pages/DashboardPage';
+import DashAddBook from '../components/Dash/DashAddBook';
+import DashMyReadList from '../components/Dash/DashMyReadList';
+import DashMyBooks from '../components/Dash/DashMyBooks';
+import DashReviews from '../components/Dash/DashReviews';
 
 
 const routes = createBrowserRouter([
@@ -26,6 +31,32 @@ const routes = createBrowserRouter([
    {
       path: '/books',
       element: <BooksPage />,
+   },
+   {
+      path: '/dash',
+      element: <DashboardPage />,
+      children: [
+         {
+            path: '',
+            element: <DashMyReadList />
+         },
+         {
+            path: 'reads',
+            element: <DashMyReadList />
+         },
+         {
+            path: 'books',
+            element: <DashMyBooks />
+         },
+         {
+            path: 'add',
+            element: <DashAddBook />
+         },
+         {
+            path: 'reviews',
+            element: <DashReviews />
+         },
+      ]
    },
    {
       path: '*',
