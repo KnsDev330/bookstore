@@ -12,6 +12,7 @@ export interface IBook {
    createdAt: string;
    updatedAt: string;
 }
+
 export interface IAddBookInput {
    title: string;
    author: string;
