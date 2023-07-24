@@ -4,18 +4,18 @@ html {
 
 .mcontainer {
    width: 100%;
-   max-width: 1280px !important;
-   margin-left: auto !important;
-   margin-right: auto !important;
+   max-width: 1280px;
+   margin-left: auto;
+   margin-right: auto;
 
-   padding-right: 20px !important;
-   padding-left: 20px !important;
+   padding-right: 20px;
+   padding-left: 20px;
 }
 
 @media screen and (min-width: 767px) {
    .mcontainer {
-      padding-right: 40px !important;
-      padding-left: 40px !important;
+      padding-right: 40px;
+      padding-left: 40px;
    }
 }
 

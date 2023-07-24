@@ -36,7 +36,7 @@ const DashSideBar: FC<Props> = ({ className }): JSX.Element => {
             <BsJournalBookmark className='text-lg' /> Add New Book
          </Link>
          <Link to='reviews' className={`${now === 'reviews' ? 'text-primary cursor-not-allowed' : ''} ${cls}`}>
-            <BiCommentDetail className='text-lg' /> My Reviews
+            <BiCommentDetail className='text-[19px]' /> My Reviews
          </Link>
       </div>
    );

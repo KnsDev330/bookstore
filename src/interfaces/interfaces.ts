@@ -2,13 +2,21 @@ import { EReadStates, EUserRoles } from "./enums";
 
 export interface IBook {
    _id: string;
-   user: string;
+   userId: string;
    title: string;
    author: string;
    genre: string;
    publicationDate: number;
+   rating: number;
+   reviews: number;
    createdAt: string;
    updatedAt: string;
+}
+export interface IAddBookInput {
+   title: string;
+   author: string;
+   genre: string;
+   publicationDate: number;
 }
 
 export interface IUser {

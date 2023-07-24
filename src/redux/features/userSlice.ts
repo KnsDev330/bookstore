@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { IUserState } from './interfaces';
@@ -103,6 +104,9 @@ function RejectedState(state: IUserState, action: any) {
    state.isError = true;
    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
    state.error = action.error.message!;
+   if (action?.error?.message?.includes('jwt expired')) {
+      localStorage.removeItem('jwt');
+   }
 }
 
 export default userSlice.reducer;
