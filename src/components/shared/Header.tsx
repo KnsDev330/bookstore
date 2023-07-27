@@ -50,7 +50,7 @@ const Header = () => {
                <div className="utility-sections flex gap-4">
 
                   <div className="wishlist-section relative cursor-pointer" title="add new book">
-                     <Link to={`${user ? `/dash` : `/login`}`}><BiAddToQueue className='text-2xl' /></Link>
+                     <Link to={`${user ? `/dash/add` : `/login`}`}><BiAddToQueue className='text-2xl' /></Link>
                   </div>
 
                   <VerticalLine />

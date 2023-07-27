@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { AiOutlineHeart } from "react-icons/ai";
 import { VscEye } from "react-icons/vsc";
 import { CiEdit } from "react-icons/ci";
-import IBook from "../types/Book";
+import { IBook } from "../interfaces/interfaces";
 
 interface Props {
    book: IBook;

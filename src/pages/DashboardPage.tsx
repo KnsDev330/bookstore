@@ -10,7 +10,7 @@ const DashboardPage: FC = (): JSX.Element => {
       <div className='text-accent flex flex-col min-h-screen bg-gray-200'>
          <TopBar />
          <Header />
-         <div className='dashboard flex flex-grow gap-5'>
+         <div className='dashboard flex justify-between flex-grow'>
             <DashSideBar />
             <Outlet />
          </div>

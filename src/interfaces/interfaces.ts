@@ -9,6 +9,7 @@ export interface IBook {
    publicationDate: number;
    rating: number;
    reviews: number;
+   image: string;
    createdAt: string;
    updatedAt: string;
 }
@@ -18,6 +19,7 @@ export interface IAddBookInput {
    author: string;
    genre: string;
    publicationDate: number;
+   image: string;
 }
 
 export interface IUser {

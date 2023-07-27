@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import BookHr from "../BookHr";
 import useAuthors from "../../hooks/useAuthors";
 import { useGetAllBooksQuery } from "../../redux/api/bookApi";
-import IBook from "../../types/Book";
+import { IBook } from "../../interfaces/interfaces";
 
 const Books = () => {
    const { data, isLoading, isError, error } = useGetAllBooksQuery();

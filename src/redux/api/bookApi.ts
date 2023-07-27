@@ -1,4 +1,5 @@
-import { IServerResponse } from "../features/interfaces";
+import { IServerResponse } from "../../interfaces/ServerResponse";
+import { IAddBookInput } from "../../interfaces/interfaces";
 import { apiApi } from "./apiApi";
 
 export const bookApi = apiApi.injectEndpoints({
@@ -8,10 +9,20 @@ export const bookApi = apiApi.injectEndpoints({
             url: `/books`,
             method: `GET`
          })
+      }),
+
+      createBook: builder.mutation<IServerResponse, any>({
+         query: (data: IAddBookInput) => ({
+            url: '/books',
+            method: 'POST',
+            body: data,
+            headers: { authorization: localStorage.getItem(`jwt`) as string }
+         })
       })
    }),
 });
 
 export const {
-   useGetAllBooksQuery
+   useGetAllBooksQuery,
+   useCreateBookMutation
 } = bookApi;

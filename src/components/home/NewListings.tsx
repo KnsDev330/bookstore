@@ -3,12 +3,12 @@ import HorizontalLine from "../shared/HorizontalLine";
 import Button from "../Button";
 import { BiChevronRight } from "react-icons/bi";
 import { useState } from "react";
-import { IBook } from "../../types/Book";
 import booksList from "../../utils/dummyData/books";
 import BookHr from "../BookHr";
+import { IBook } from "../../interfaces/interfaces";
 
 const NewListings = () => {
-   const [books] = useState<IBook[]>(booksList);
+   const [books] = useState<IBook[]>(booksList as IBook[]);
    const navigate = useNavigate();
 
    return (
