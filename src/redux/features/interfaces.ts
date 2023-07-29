@@ -6,3 +6,15 @@ export interface IUserState {
    isError: boolean;
    error: string | null;
 }
+
+export interface IQuery {
+   limit?: number;
+   page?: number;
+   sortBy?: string;
+   sortOrder?: "desc" | "asc";
+}
+
+export enum ESortOrder {
+   desc = "desc",
+   asc = "asc",
+}

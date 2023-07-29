@@ -28,14 +28,21 @@ const BookHr: FC<Props> = ({ book, showEdit, className }): JSX.Element => {
             <div className="view-like-add-container absolute bottom-2 right-2 flex flex-col gap-2 drop-shadow-lg">
                <BiBookBookmark className={`${cls} duration-[200ms] `} title='Add to Read List' />
                <VscEye className={`${cls} duration-[300ms]`} title='Show Details' />
-               {showEdit && <CiEdit className={`${cls} duration-[400ms]`} title='Edit' />}
+               {showEdit && <Link to={book._id}><CiEdit className={`${cls} duration-[400ms]`} title='Edit' /></Link>}
             </div>
          </div>
          <div className="details flex flex-col gap-2 w-1/2 me-3 mt-2">
-            <h3 className="title font-medium"><Link className="hover:underline hover:text-blue-600" title={book.title} to={`/books/${book._id}`}>{book.title}</Link></h3>
-            <h3 className="author text-lighter text-xs"><Link className="hover:underline hover:text-blue-600" title={book.author} to={`/search/author/${book.author}`}>{book.author}</Link></h3>
+            <h3 className="title font-medium">
+               <Link className="hover:underline hover:text-blue-600" title={book.title} to={`/books/${book._id}`}>{book.title}</Link>
+            </h3>
+            <h3 className="author text-lighter text-xs">
+               <Link className="hover:underline hover:text-blue-600" title={book.author} to={`/search/author/${book.author}`}>{book.author}</Link>
+            </h3>
             <div className="flex items-start flex-col leading-none" title="rating">
-               <Rating readonly fullSymbol={<FaStar className='fill-primary text-xl leading-none' />} emptySymbol={<FaRegStar className='fill-gray-300 text-xl' />} fractions={10} initialRating={book.rating} />
+               <Rating readonly
+                  fullSymbol={<FaStar className='fill-primary text-xl leading-none' />}
+                  emptySymbol={<FaRegStar className='fill-gray-300 text-xl' />} fractions={10} initialRating={book.rating}
+               />
                <p className="opacity-60 text-sm leading-none" title="reviews">({book.reviews || 'no'} reviews)</p>
             </div>
          </div>

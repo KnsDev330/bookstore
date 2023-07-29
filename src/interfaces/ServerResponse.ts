@@ -16,6 +16,8 @@ export interface IServerResponse {
 }
 
 export interface ILoginResponse extends IServerResponse { data: { user: IUser; accessToken: string; } }
+export interface IBookResponse extends IServerResponse { data: IBook }
 export interface IBooksResponse extends IServerResponse { data: IBook[] }
+export interface IReviewResponse extends IServerResponse { data: IReview }
 export interface IReviewsResponse extends IServerResponse { data: IReview[] }
 export interface IGetUserResponse extends IServerResponse { data: IUser }

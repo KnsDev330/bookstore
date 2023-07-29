@@ -1,9 +1,18 @@
-import { IBooksResponse, IServerResponse } from "../../interfaces/ServerResponse";
+import { IBookResponse, IBooksResponse, IServerResponse } from "../../interfaces/ServerResponse";
 import { IAddBookInput } from "../../interfaces/interfaces";
+import { IQuery } from "../features/interfaces";
 import { apiApi } from "./apiApi";
 
 export const bookApi = apiApi.injectEndpoints({
    endpoints: (builder) => ({
+
+      getBookById: builder.query<IBookResponse, { id: string }>({
+         query: ({ id }) => ({
+            url: `/books/${id}`,
+            method: `GET`
+         })
+      }),
+
       getAllBooks: builder.query<IServerResponse, void>({
          query: () => ({
             url: `/books`,
@@ -11,9 +20,9 @@ export const bookApi = apiApi.injectEndpoints({
          })
       }),
 
-      getMyAllBooks: builder.query<IBooksResponse, { limit?: number, page?: number }>({
-         query: ({ limit, page }) => ({
-            url: `/books/my?limit=${limit || 10}&page=${page || 1}`,
+      getMyAllBooks: builder.query<IBooksResponse, IQuery>({
+         query: ({ limit, page, sortBy, sortOrder }) => ({
+            url: `/books/my?limit=${limit || 10}&page=${page || 1}&sortBy=${sortBy || 'createdAt'}&sortOrder=${sortOrder || 'desc'}`,
             method: `GET`,
             headers: { authorization: localStorage.getItem('jwt') || '' },
          })
@@ -26,12 +35,24 @@ export const bookApi = apiApi.injectEndpoints({
             body: data,
             headers: { authorization: localStorage.getItem(`jwt`) as string }
          })
-      })
+      }),
+
+      updateBook: builder.mutation<IBookResponse, { id: string, data: IAddBookInput }>({
+         query: ({ id, data }) => ({
+            url: `/books/${id}`,
+            method: 'PATCH',
+            body: data,
+            headers: { authorization: localStorage.getItem(`jwt`) as string }
+         })
+      }),
+
    }),
 });
 
 export const {
+   useGetBookByIdQuery,
    useGetAllBooksQuery,
    useGetMyAllBooksQuery,
-   useCreateBookMutation
+   useCreateBookMutation,
+   useUpdateBookMutation,
 } = bookApi;

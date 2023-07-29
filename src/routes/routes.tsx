@@ -13,6 +13,7 @@ import DashAddBook from '../components/Dash/DashAddBook';
 import DashMyReadList from '../components/Dash/DashMyReadList';
 import DashMyBooks from '../components/Dash/DashMyBooks';
 import DashReviews from '../components/Dash/DashReviews';
+import DashEditBook from '../components/Dash/DashEditBook';
 
 
 const routes = createBrowserRouter([
@@ -47,6 +48,10 @@ const routes = createBrowserRouter([
          {
             path: 'books',
             element: <DashMyBooks />
+         },
+         {
+            path: 'books/:id',
+            element: <DashEditBook />
          },
          {
             path: 'add',
