@@ -14,7 +14,7 @@ const DashEditBook: FC = (): JSX.Element => {
    const { id } = useParams();
    const cls = `bg-inherit border border-gray-200 focus:border-primary rounded outline-none duration-300 px-2 py-1 w-full opacity`;
 
-   const { data: bookData, isFetching: isBookFetching, error: bookError } = useGetBookByIdQuery({ id: id! });
+   const { data: bookData, isFetching: isBookFetching, error: bookError } = useGetBookByIdQuery({ id: id! }, { refetchOnMountOrArgChange: true });
    const { register, handleSubmit, formState: { errors } } = useForm<IAddBookInput>();
 
    const [updateBook, { error, isError, isSuccess, data, isLoading }] = useUpdateBookMutation();
@@ -26,7 +26,7 @@ const DashEditBook: FC = (): JSX.Element => {
 
 
 
-   if (isBookFetching) return <div className="flex flex-wrap gap-5 p-5 h-[325px] mx-auto"><Shimmer /></div>
+   if (isBookFetching) return <div className="flex flex-wrap gap-5 p-5 h-[325px] me-auto"><Shimmer /></div>
    return (
       <div className="shdow-lg w-[500px] max-w-[90%] my-5 md:px-5 pb-5 pt-0 rounded-lg mx-auto lg:ms-0">
          <div className="texts">

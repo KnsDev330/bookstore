@@ -23,7 +23,7 @@ const DashMyBooks = () => {
    useEffect(() => setBooks(data?.data ? data.data : []), [data]);
    useEffect(() => void isFetching && setBooks([]), [isFetching]);
 
-   if (isFetching) return <div className="flex flex-wrap gap-5 p-5 h-[325px] mx-auto">{[...Array(limit)].map((_e, i) => <Shimmer key={i} />)}</div>
+   if (isFetching) return <div className="flex flex-wrap gap-5 p-5 h-[325px] mx-auto">{[...Array(5)].map((_e, i) => <Shimmer key={i} />)}</div>
    return (
       <div className="shdow-lg w-full max-w-[90%] my-5 md:px-5 pb-5 pt-0 rounded-lg mx-auto lg:ms-0">
          <div className="texts mb-5">
@@ -34,15 +34,14 @@ const DashMyBooks = () => {
             isError ? (
                <ErrorBox error={getErrors(error)} />
             ) : (
-               isSuccess && data.data.length === 0 ? (
-                  <SuccessBox message="No books found" />
-               ) : (<>
+               <>
                   <SortBy utils={{ sortBy, sortOrder, setSortBy, setSortOrder }} className="mb-3" />
+                  {isSuccess && data.data.length === 0 && <SuccessBox message="No books found" />}
                   <div className="flex gap-5 justify-start flex-wrap">
                      {books.map(book => <BookHr book={book} key={book._id} showEdit />)}
                   </div>
                   <Pagination utils={{ pages: data?.meta.pages, page, limit, setLimit, setPage }} />
-               </>)
+               </>
             )
          }
       </div>

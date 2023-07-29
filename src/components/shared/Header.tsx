@@ -7,6 +7,8 @@ import { AiOutlineRead } from "react-icons/ai";
 import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import { useEffect, useState } from "react";
 import { getUserFromLocalStorage } from "../../redux/features/userSlice";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Header = () => {
 
@@ -24,6 +26,7 @@ const Header = () => {
 
    return (
       <>
+         <ToastContainer autoClose={2000} />
          <div className={`sticky top-0 h-16 items-center flex text-accent bg-white z-[1] border-b`}>
             <div className="mcontainer flex justify-between">
 
@@ -38,9 +41,9 @@ const Header = () => {
                      <input type="text"
                         id="homeBookSearchBar"
                         className="
-                        w-80
-                        bg-inherit border-b outline-none focus:border-primary duration-300
-                     "
+                           w-80
+                           bg-inherit border-b outline-none focus:border-primary duration-300
+                        "
                         placeholder="Search books"
                      />
                   </div>

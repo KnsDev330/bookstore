@@ -1,4 +1,4 @@
-import { IBook, IReview, IUser } from "./interfaces";
+import { IBook, IRead, IReview, IUser } from "./interfaces";
 
 export interface IServerResponse {
    code: number;
@@ -21,3 +21,6 @@ export interface IBooksResponse extends IServerResponse { data: IBook[] }
 export interface IReviewResponse extends IServerResponse { data: IReview }
 export interface IReviewsResponse extends IServerResponse { data: IReview[] }
 export interface IGetUserResponse extends IServerResponse { data: IUser }
+
+export interface IReadResponse extends IServerResponse { data: IRead }
+export interface IReadsResponse extends IServerResponse { data: IRead[] }

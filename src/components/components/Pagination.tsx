@@ -17,8 +17,7 @@ const Pagination: FC<Props> = ({ className, utils: { page, pages, limit, setLimi
          <div className="flex gap-2 items-center">
             <p className="text-xs">Page</p>
             <select className="outline-none ps-2 pe-1 rounded border border-gray-300 focus-within:border-gray-400 duration-300"
-               onChange={e => setPage(Number(e.target.value))} value={page}>
-               <option value="0" disabled>0</option>
+               onChange={e => setPage(Number(e.target.value))} onClick={e => setPage(Number(e.currentTarget.value))} value={page}>
                {[...Array(pages || 0)].map((_e, i) => <option value={i + 1} key={i + 1}>{i + 1}</option>)}
             </select>
          </div>
@@ -26,7 +25,6 @@ const Pagination: FC<Props> = ({ className, utils: { page, pages, limit, setLimi
             <p className="text-xs">Limit</p>
             <select className="outline-none ps-2 pe-1 rounded border border-gray-300 focus-within:border-gray-400 duration-300"
                onChange={e => setLimit(Number(e.target.value))} defaultValue={limit || 10}>
-               <option value="0" disabled>0</option>
                <option value="3" >3</option>
                <option value="5" >5</option>
                <option value="10" >10</option>
