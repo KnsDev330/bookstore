@@ -9,6 +9,7 @@ export interface IServerResponse {
    stack: any;
    meta: {
       page: number;
+      pages: number;
       limit: number;
       total: number;
    }

@@ -26,3 +26,110 @@ html {
 .ahover:hover {
    text-decoration: underline;
 }
+
+
+.shimmer {
+   background: linear-gradient(to right, #f0f0f0 4%, #e0e0e0 25%, #f0f0f0 36%);
+   background-size: 200% 100%;
+   animation: shimmerAnimation 1s infinite;
+   border-radius: 5px;
+   /* You can adjust this as needed */
+}
+
+@keyframes shimmerAnimation {
+   0% {
+      background-position: 200% 0;
+   }
+
+   100% {
+      background-position: -200% 0;
+   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.shimmer-card-container {
+   width: 300px;
+}
+
+.shimmer-card {
+   background-color: #f0f0f0;
+   border-radius: 10px;
+   overflow: hidden;
+   padding: 16px;
+}
+
+.shimmer-lines {
+   display: flex;
+   flex-direction: column;
+   margin-bottom: 16px;
+}
+
+.shimmer-line {
+   height: 16px;
+   background: linear-gradient(to right, #f0f0f0 4%, #e0e0e0 25%, #f0f0f0 36%);
+   background-size: 200% 100%;
+   border-radius: 5px;
+   margin-bottom: 8px;
+   animation: shimmerAnimation 1s infinite;
+}
+
+.shimmer-line-long {
+   width: 80%;
+}
+
+.shimmer-line-medium {
+   width: 60%;
+}
+
+.shimmer-line-short {
+   width: 40%;
+}
+
+.shimmer-title {
+   height: 20px;
+   background: linear-gradient(to right, #f0f0f0 4%, #e0e0e0 25%, #f0f0f0 36%);
+   background-size: 200% 100%;
+   border-radius: 5px;
+   margin-bottom: 8px;
+   width: 60%;
+   animation: shimmerAnimation 1s infinite;
+}
+
+.shimmer-description {
+   height: 16px;
+   background: linear-gradient(to right, #f0f0f0 4%, #e0e0e0 25%, #f0f0f0 36%);
+   background-size: 200% 100%;
+   border-radius: 5px;
+   width: 80%;
+   animation: shimmerAnimation 1s infinite;
+}
+
+@keyframes shimmerAnimation {
+   0% {
+      background-position: 200% 0;
+   }
+
+   100% {
+      background-position: -200% 0;
+   }
+}
