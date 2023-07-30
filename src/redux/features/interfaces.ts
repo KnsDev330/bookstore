@@ -14,6 +14,8 @@ export interface IQuery {
    sortOrder?: "desc" | "asc";
 }
 
+export interface IReadListAllQuery extends IQuery { state?: string; }
+
 export enum ESortOrder {
    desc = "desc",
    asc = "asc",

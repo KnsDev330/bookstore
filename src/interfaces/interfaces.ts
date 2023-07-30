@@ -51,25 +51,12 @@ export interface IReview {
 
 export interface IRead {
    _id: string;
-   user: string;
-   book: string;
+   userId: string;
+   bookId: {
+      title: string;
+      image: string;
+   };
    state: EReadStates;
    createdAt: string;
    updatedAt: string
-}
-
-export enum EReadStates {
-   ToRead = 'ToRead',
-   CurrentlyReading = 'CurrentlyReading',
-   AlreadyRead = 'AlreadyRead',
-   Abandoned = 'Abandoned'
-}
-
-export default interface IReads extends Document {
-   _id: string | ObjectId;
-   user: ObjectId | string;
-   book: ObjectId | string;
-   state: EReadStates;
-   createdAt: string;
-   updateddAt: string;
 }

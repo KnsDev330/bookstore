@@ -1,5 +1,6 @@
 import { IReadResponse, IReadsResponse } from "../../interfaces/ServerResponse";
 import { EReadStates } from "../../interfaces/enums";
+import { IReadListAllQuery } from "../features/interfaces";
 import { apiApi } from "./apiApi";
 
 export const readApi = apiApi.injectEndpoints({
@@ -8,14 +9,16 @@ export const readApi = apiApi.injectEndpoints({
       getReadById: builder.query<IReadResponse, { id: string }>({
          query: ({ id }) => ({
             url: `/reads/${id}`,
-            method: `GET`
+            method: `GET`,
+            headers: { authorization: localStorage.getItem(`jwt`) as string }
          })
       }),
 
-      getAllReads: builder.query<IReadsResponse, void>({
-         query: () => ({
-            url: `/reads`,
-            method: `GET`
+      getAllReads: builder.query<IReadsResponse, IReadListAllQuery>({
+         query: ({ limit, page, sortBy, sortOrder, state }) => ({
+            url: `/reads?limit=${limit || 25}&page=${page || 1}&sortBy=${sortBy || 'createdAt'}&sortOrder=${sortOrder || 'desc'}${state ? `&state=${state}` : ''}`,
+            method: `GET`,
+            headers: { authorization: localStorage.getItem(`jwt`) as string }
          })
       }),
 

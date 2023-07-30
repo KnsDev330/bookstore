@@ -1,7 +1,7 @@
 
-const Shimmer = () => {
+const Shimmer = ({ className }: { className?: string }) => {
    return (
-      <div className="shimmer-card-container bg-white/40 p-3 rounded-md">
+      <div className={`${className || ''} shimmer-card-container bg-white/40 p-3 rounded-md`}>
          <div className="shimmer-lines">
             <div className="shimmer-line shimmer-line-long"></div>
             <div className="shimmer-line shimmer-line-short"></div>
