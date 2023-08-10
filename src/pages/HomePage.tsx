@@ -1,4 +1,4 @@
-import NewListings from "../components/home/NewListings";
+import Books from "../components/books/Books";
 import Layout from "./Layout";
 
 const HomePage = () => {
@@ -6,7 +6,7 @@ const HomePage = () => {
       <Layout>
          <div className="bg-white w-full text-accent">
             <div className="mcontainer new-listings flex gap-5 flex-col md:flex-row">
-               <NewListings />
+               <Books />
             </div>
          </div>
       </Layout>
