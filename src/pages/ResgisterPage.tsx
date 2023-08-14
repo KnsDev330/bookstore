@@ -1,11 +1,11 @@
 import Register from "../components/auth/Resgiter";
-import Layout from "./Layout";
+import PageLayout from "./PageLayout";
 
 const ResgisterPage = () => {
    return (
-      <Layout>
+      <PageLayout>
          <Register />
-      </Layout>
+      </PageLayout>
    );
 };
 

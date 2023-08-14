@@ -1,12 +1,12 @@
 import { FC } from "react";
-import Layout from "./Layout";
+import PageLayout from "./PageLayout";
 import Login from "../components/auth/Login";
 
 const LoginPage: FC = (): JSX.Element => {
    return (
-      <Layout>
+      <PageLayout>
          <Login />
-      </Layout>
+      </PageLayout>
    );
 };
 

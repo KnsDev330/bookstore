@@ -1,12 +1,12 @@
-import Layout from "./Layout";
+import PageLayout from "./PageLayout";
 
 const NotFoundPage = () => {
    return (
-      <Layout>
+      <PageLayout>
          <div>
             NotFound
          </div>
-      </Layout>
+      </PageLayout>
    );
 };
 

@@ -3,7 +3,7 @@ import Footer from "../components/shared/Footer";
 import Header from "../components/shared/Header";
 import TopBar from "../components/shared/TopBar";
 
-const Layout = ({ children }: { children: ReactNode }) => {
+const PageLayout = ({ children }: { children: ReactNode }) => {
    return (
       <div className="flex flex-col min-h-screen">
          <TopBar />
@@ -14,4 +14,4 @@ const Layout = ({ children }: { children: ReactNode }) => {
    );
 };
 
-export default Layout;
+export default PageLayout;
