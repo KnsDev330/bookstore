@@ -13,6 +13,10 @@ export default {
             'text': '#444444',
             'accent': '#000000',
             'lighter': '#999999',
+            facebook: '#3b5998',
+            twitter: '#1da1f2',
+            linkedin: '#0077b5',
+            pinterest: '#e60023'
          },
          fontSize: {
             heading: '32px',
