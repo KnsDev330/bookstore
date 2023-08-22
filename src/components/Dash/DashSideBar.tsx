@@ -3,7 +3,6 @@ import { AiOutlineRead } from 'react-icons/ai';
 import { PiBooksDuotone } from 'react-icons/pi';
 import { BsJournalBookmark } from 'react-icons/bs';
 import { Link, useLocation } from 'react-router-dom';
-import { BiCommentDetail } from 'react-icons/bi';
 
 interface Props {
    className?: string;
@@ -17,7 +16,6 @@ const DashSideBar: FC<Props> = ({ className }): JSX.Element => {
       if (pathname.includes('/dash/reads')) setNow('reads');
       if (pathname.includes('/dash/books')) setNow('books');
       if (pathname.includes('/dash/add')) setNow('add');
-      if (pathname.includes('/dash/reviews')) setNow('reviews');
    }, [pathname]);
    return (
       <div
@@ -34,9 +32,6 @@ const DashSideBar: FC<Props> = ({ className }): JSX.Element => {
          </Link>
          <Link to='add' className={`${now === 'add' ? 'text-primary cursor-not-allowed' : ''} ${cls}`}>
             <BsJournalBookmark className='text-lg' /> Add New Book
-         </Link>
-         <Link to='reviews' className={`${now === 'reviews' ? 'text-primary cursor-not-allowed' : ''} ${cls}`}>
-            <BiCommentDetail className='text-[19px]' /> My Reviews
          </Link>
       </div>
    );

@@ -22,6 +22,12 @@ export interface IAddBookInput {
    image: string;
 }
 
+export interface IPostReviewPayload {
+   bookId: string;
+   rating: number;
+   comment: string;
+}
+
 export interface IUser {
    _id: string;
    role: EUserRoles;

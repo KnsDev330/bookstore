@@ -19,6 +19,7 @@ html {
    }
 }
 
+
 .ahover {
    color: rgb(59 130 246);
 }
@@ -26,6 +27,52 @@ html {
 .ahover:hover {
    text-decoration: underline;
 }
+
+
+
+/* start custom tooltip */
+.ctt {
+   position: relative;
+}
+
+.cttt {
+   visibility: hidden;
+   position: absolute;
+   background-color: #333;
+   color: white;
+   padding: 5px;
+   border-radius: 5px;
+   bottom: 120%;
+   font-size: 13px;
+   padding-left: 15px;
+   padding-right: 15px;
+   left: 50%;
+   transform: translateX(-50%);
+   white-space: nowrap;
+   text-transform: initial;
+   z-index: 2;
+}
+
+.cttt::after {
+   content: "";
+   position: absolute;
+   width: 30px;
+   height: 30px;
+   background: linear-gradient(-45deg, #333 30%, transparent 1%);
+   left: 50%;
+   transform: translateX(-50%) rotate(45deg);
+   bottom: -0%;
+   z-index: 1;
+}
+
+.ctt:hover .cttt {
+   visibility: visible;
+}
+
+/* end custom tooltip */
+
+
+
 
 
 .shimmer {

@@ -39,3 +39,20 @@ export const getErrors = (r: IServerResponse | FetchBaseQueryError | SerializedE
 
    return `Unknown error`;
 }
+
+
+export const convertDate = (inputDate: string): string => {
+   const months = [
+      "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+   ];
+
+   const date = new Date(inputDate);
+   const day = date.getUTCDate();
+   const month = months[date.getUTCMonth()];
+   const year = date.getUTCFullYear().toString().slice(-2);
+   const hours = ("0" + date.getUTCHours().toString()).slice(-2);
+   const minutes = ("0" + date.getUTCMinutes().toString()).slice(-2);
+
+   return `${day} ${month}, ${year} ${hours}:${minutes}`;
+}

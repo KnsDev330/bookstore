@@ -3,7 +3,7 @@ import { MdOutlineAccountCircle } from "react-icons/md";
 import VerticalLine from "./VerticalLine";
 import { Link } from "react-router-dom";
 import { BiAddToQueue } from "react-icons/bi";
-import { AiOutlineRead } from "react-icons/ai";
+import { AiOutlineHome, AiOutlineLogout, AiOutlineRead } from "react-icons/ai";
 import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import { useEffect, useState } from "react";
 import { getUserFromLocalStorage } from "../../redux/features/userSlice";
@@ -65,9 +65,23 @@ const Header = () => {
 
                   <VerticalLine />
 
-                  <div className="account-section relative cursor-pointer" title={user ? 'my account' : 'login'}>
-                     {!user ? <Link to='/login'><MdOutlineAccountCircle className='text-2xl' /></Link> :
-                        <img src="/dps/1.svg" alt="" className="w-7 bg-white rounded-full border" draggable={false} />
+                  <div className="account-section relative cursor-pointer">
+                     {
+                        !user ? (
+                           <Link to='/login'><MdOutlineAccountCircle className='text-2xl' title='login' /></Link>
+                        ) : (
+                           <div className="relative group">
+                              <img src="/dps/1.svg" alt="" className="w-7 bg-white rounded-full border" draggable={false} title='user avatar' />
+                              <div className="hidden group-hover:block absolute bg-white shadow border border-gray-200 right-0 rounded flex flex-col top-7 duration-300">
+                                 <Link to='/dash' className="flex w-full items-center gap-2 py-2 px-5 text-gray-700 hover:bg-gray-100" title='go to dashboard'>
+                                    <AiOutlineHome className="text-xl" /> Dashboard
+                                 </Link>
+                                 <button className="flex w-full items-center gap-2 py-2 px-5 text-gray-700 hover:bg-gray-100" title='logout from your account'>
+                                    <AiOutlineLogout className="text-xl" /> Signout
+                                 </button>
+                              </div>
+                           </div>
+                        )
                      }
                   </div>
                </div>

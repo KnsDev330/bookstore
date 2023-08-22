@@ -13,7 +13,7 @@ import SuccessBox from "../shared/SuccessBox";
 const DashAddBook: FC = (): JSX.Element => {
    const cls = `bg-inherit border border-gray-200 focus:border-primary rounded outline-none duration-300 px-2 py-1 w-full opacity`;
 
-   const { setValue, register, handleSubmit, formState: { errors } } = useForm<IAddBookInput>();
+   const { setValue, register, handleSubmit, formState: { errors }, reset } = useForm<IAddBookInput>();
    const [postBook, { isLoading, isError, error, isSuccess, data }] = useCreateBookMutation();
    useEffect(() => console.log('data', data), [data]);
    useEffect(() => console.log('error', error), [error]);
@@ -22,6 +22,8 @@ const DashAddBook: FC = (): JSX.Element => {
       console.log(data);
       void postBook({ ...data, publicationDate: Number(data.publicationDate) });
    };
+
+   useEffect(() => { (isSuccess && reset()); }, [isSuccess, reset]);
 
 
    /* DUMMY DATA */
