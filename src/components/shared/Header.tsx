@@ -5,10 +5,11 @@ import { Link } from "react-router-dom";
 import { BiAddToQueue } from "react-icons/bi";
 import { AiOutlineHome, AiOutlineLogout, AiOutlineRead } from "react-icons/ai";
 import { useAppDispatch, useAppSelector } from "../../redux/hook";
-import { useEffect, useState } from "react";
-import { getUserFromLocalStorage } from "../../redux/features/userSlice";
+import { ChangeEvent, useEffect, useState } from "react";
+import { getUserFromLocalStorage, logoutUser } from "../../redux/features/userSlice";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { changeSearchTerm } from "../../redux/features/bookSlice";
 
 const Header = () => {
 
@@ -22,6 +23,16 @@ const Header = () => {
       if (!user && localStorage.getItem('jwt'))
          void dispatch(getUserFromLocalStorage())
    }, [user, dispatch]);
+
+   // change searchTerm
+   const [inputValue, setInputValue] = useState<string>('');
+   const [oldTimer, setOldTimer] = useState<number>();
+   const updateSearchTerm = (e: ChangeEvent<HTMLInputElement>): void => {
+      const newInputVal = e.target.value.trim();
+      setInputValue(newInputVal);
+      clearTimeout(oldTimer);
+      setOldTimer(setTimeout(() => dispatch(changeSearchTerm(newInputVal)), 500));
+   }
 
 
    return (
@@ -45,6 +56,8 @@ const Header = () => {
                            bg-inherit border-b outline-none focus:border-primary duration-300
                         "
                         placeholder="Search books"
+                        value={inputValue}
+                        onChange={updateSearchTerm}
                      />
                   </div>
                </div>
@@ -59,8 +72,10 @@ const Header = () => {
                   <VerticalLine />
 
                   <div className="cart-section relative cursor-pointer" onClick={toggleSRL} title="my read list">
-                     <AiOutlineRead className='text-2xl mt-[2px]' />
-                     <Badge count={user?.counters.reads || 0} />
+                     <Link to='/dash/reads'>
+                        <AiOutlineRead className='text-2xl mt-[2px]' />
+                        <Badge count={user?.counters.reads || 0} />
+                     </Link>
                   </div>
 
                   <VerticalLine />
@@ -72,11 +87,13 @@ const Header = () => {
                         ) : (
                            <div className="relative group">
                               <img src="/dps/1.svg" alt="" className="w-7 bg-white rounded-full border" draggable={false} title='user avatar' />
-                              <div className="hidden group-hover:block absolute bg-white shadow border border-gray-200 right-0 rounded flex flex-col top-7 duration-300">
+                              <div className={`hidden group-hover:block absolute bg-white shadow border border-gray-200 right-0 rounded flex flex-col top-7 duration-300`}>
                                  <Link to='/dash' className="flex w-full items-center gap-2 py-2 px-5 text-gray-700 hover:bg-gray-100" title='go to dashboard'>
                                     <AiOutlineHome className="text-xl" /> Dashboard
                                  </Link>
-                                 <button className="flex w-full items-center gap-2 py-2 px-5 text-gray-700 hover:bg-gray-100" title='logout from your account'>
+                                 <button
+                                    onClick={() => dispatch(logoutUser())}
+                                    className="flex w-full items-center gap-2 py-2 px-5 text-gray-700 hover:bg-gray-100" title='logout from your account'>
                                     <AiOutlineLogout className="text-xl" /> Signout
                                  </button>
                               </div>
@@ -86,12 +103,6 @@ const Header = () => {
                   </div>
                </div>
             </div>
-         </div>
-         <div className={`${!showReadList ? 'hidden' : ''} duration-700 fixed top-0 h-screen w-full backdrop-blur-sm z-[1] bg-black/50`} onClick={toggleSRL}>
-         </div>
-         <div className={`${showReadList ? 'right-0' : 'right-[-100vw]'} duration-300 fixed text-accent top-0 h-screen bg-white shadow-lg z-[1] py-10 px-10 w-[90%] max-w-[500px]`}
-            onClick={e => e.stopPropagation()}>
-            hidsiufgisdbvghsdvbh
          </div>
       </>
    );

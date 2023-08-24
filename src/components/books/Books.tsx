@@ -1,8 +1,3 @@
-
-import { Link } from "react-router-dom";
-import HorizontalLine from "../shared/HorizontalLine";
-import Button from "../Button";
-import { BiChevronRight } from "react-icons/bi";
 import { useEffect, useState } from "react";
 import BookHr from "../BookHr";
 import { useGetAllBooksQuery } from "../../redux/api/bookApi";
@@ -12,12 +7,20 @@ import { getErrors } from "../../utils/Utils";
 import Shimmer from "../components/shimmer";
 import { Slider } from "@mui/material";
 import useGenres from "../../hooks/useGenres";
+import { useAppDispatch, useAppSelector } from "../../redux/hook";
+import { changeSearchTerm } from "../../redux/features/bookSlice";
 
 const Books = () => {
+   const dispatch = useAppDispatch();
+
+   // states
+   const { searchTerm } = useAppSelector(state => state.book);
+   useEffect(() => void dispatch(changeSearchTerm('')), [dispatch]);
+   useEffect(() => console.log('searchTerm', searchTerm), [searchTerm]);
 
    const [genre, setGenre] = useState<string | undefined>();
    const [dateRange, setDateRange] = useState<[number, number]>([1950, 2023])
-   const { data, isError, error, isFetching } = useGetAllBooksQuery({ genre, dateRange: `${dateRange[0]}-${dateRange[1]}` }, { refetchOnFocus: true, refetchOnMountOrArgChange: true });
+   const { data, isError, error, isFetching } = useGetAllBooksQuery({ searchTerm, genre, dateRange: `${dateRange[0]}-${dateRange[1]}` }, { refetchOnFocus: true, refetchOnMountOrArgChange: true });
    const { genres } = useGenres(data?.data as IBook[] || []);
 
    const [value, setValue] = useState<number[]>(dateRange);
@@ -32,18 +35,10 @@ const Books = () => {
       // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [value]);
 
-   const handleChange = (_e: Event, newValue: number | number[]) => {
-      setValue(newValue as number[]);
-
-   };
+   const handleChange = (_e: Event, newValue: number | number[]) => setValue(newValue as number[]);
    return (
       <div className="flex flex-col my-10 bg-white">
          <div className="flex flex-col mb-10">
-            <div className="flex w-full justify-between items-center gap-10">
-               <h1 className="font-medium md:font-heading md:text-heading">New Listings</h1>
-               <HorizontalLine className="flex-grow" />
-               <Link to='/best-sellers'><Button text='View All' variant='primary' className="!p-3 !h-8" iconRight={<BiChevronRight className="text-xl" />} /></Link>
-            </div>
             {
                data?.data && (
                   <div>

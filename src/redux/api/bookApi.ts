@@ -13,9 +13,9 @@ export const bookApi = apiApi.injectEndpoints({
          })
       }),
 
-      getAllBooks: builder.query<IBooksResponse, { genre?: string, dateRange: string } & IQuery>({
-         query: ({ limit, page, sortBy, sortOrder, genre, dateRange }) => ({
-            url: `/books?limit=${limit || 10}&page=${page || 1}&sortBy=${sortBy || 'createdAt'}&sortOrder=${sortOrder || 'desc'}${genre ? `&genre=${genre}` : ``}&dateRange=${dateRange}`,
+      getAllBooks: builder.query<IBooksResponse, { searchTerm?: string, genre?: string, dateRange: string } & IQuery>({
+         query: ({ limit, page, sortBy, sortOrder, genre, dateRange, searchTerm }) => ({
+            url: `/books?limit=${limit || 10}&page=${page || 1}&sortBy=${sortBy || 'createdAt'}&sortOrder=${sortOrder || 'desc'}${genre ? `&genre=${genre}` : ``}${searchTerm ? `&searchTerm=${searchTerm}` : ``}&dateRange=${dateRange}`,
             method: `GET`
          })
       }),
