@@ -92,7 +92,7 @@ const Books = () => {
                                        </>
                                     ) : (
                                        <div className="bg-gray-100 border border-gray-200 gap-2 rounded-full text-gray-600 flex items-center px-2 py-1">
-                                          Fiction <span className="text-lighter -mb-[1px] cursor-pointer" onClick={() => setGenre(undefined)}>X</span>
+                                          {genre} <span className="text-lighter -mb-[1px] cursor-pointer" onClick={() => setGenre(undefined)}>X</span>
                                        </div>
                                     )}
                                  </div>
