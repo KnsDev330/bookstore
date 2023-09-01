@@ -49,7 +49,6 @@ const Register: FC<Props> = ({ className }) => {
                      autoCapitalize="none"
                      autoComplete="name"
                      autoCorrect="off"
-                     defaultValue='Khandaker Sajjat'
                      className="outline-none rounded h-10 border focus:border-primary duration-300 px-3 bg-inherit"
                      {...register('name', { required: 'Name is required' })}
                      title="Enter your name"
@@ -62,7 +61,6 @@ const Register: FC<Props> = ({ className }) => {
                      autoCapitalize="none"
                      autoComplete="email"
                      autoCorrect="off"
-                     defaultValue='me7@wtf.com'
                      className="outline-none rounded h-10 border focus:border-primary duration-300 px-3 bg-inherit"
                      {...register('email', { required: 'Email is required' })}
                      title="Enter your email address"
@@ -74,7 +72,6 @@ const Register: FC<Props> = ({ className }) => {
                      type="password"
                      autoCapitalize="none"
                      autoComplete="password"
-                     defaultValue='12345678'
                      className="outline-none rounded h-10 border focus:border-primary duration-300 px-3 bg-inherit"
                      {...register('password', { required: 'Password is required' })}
                      title="Enter a strong password"
