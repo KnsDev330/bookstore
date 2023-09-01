@@ -9,8 +9,6 @@ export const TextEllipse = (text: string, maxLength: number): string => text.len
 export const randInt = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1)) + min;
 
 export const getErrors = (r: IServerResponse | FetchBaseQueryError | SerializedError): string => {
-   console.log('rrr', r);
-
    r = r as IServerResponse;
    if (r?.data?.text && r?.data?.errors) {
       const data = r.data as IServerResponse;

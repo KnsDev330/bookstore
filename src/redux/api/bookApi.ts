@@ -46,6 +46,14 @@ export const bookApi = apiApi.injectEndpoints({
          })
       }),
 
+      deleteBook: builder.mutation<IBookResponse, { id: string }>({
+         query: ({ id }) => ({
+            url: `/books/${id}`,
+            method: 'DELETE',
+            headers: { authorization: localStorage.getItem(`jwt`) as string }
+         })
+      }),
+
    }),
 });
 
@@ -55,4 +63,5 @@ export const {
    useGetMyAllBooksQuery,
    useCreateBookMutation,
    useUpdateBookMutation,
+   useDeleteBookMutation
 } = bookApi;

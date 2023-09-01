@@ -1,21 +1,21 @@
-import Badge from "./Badge";
 import { MdOutlineAccountCircle } from "react-icons/md";
 import VerticalLine from "./VerticalLine";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { BiAddToQueue } from "react-icons/bi";
-import { AiOutlineHome, AiOutlineLogout, AiOutlineRead } from "react-icons/ai";
+import { AiOutlineHome, AiOutlineLogout } from "react-icons/ai";
 import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import { ChangeEvent, useEffect, useState } from "react";
 import { getUserFromLocalStorage, logoutUser } from "../../redux/features/userSlice";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { changeSearchTerm } from "../../redux/features/bookSlice";
+import { changeLeftNavPos } from "../../redux/features/leftNavSlice";
+import { FaBars, FaTimes } from "react-icons/fa";
+
 
 const Header = () => {
 
    const { user } = useAppSelector(state => state.user);
-   const [showReadList, setShowReadtList] = useState<boolean>(false);
-   const toggleSRL = () => setShowReadtList(!showReadList);
 
    /* LOAD USER DATA IF JWT FOUND IN  LOCALSTORAGE */
    const dispatch = useAppDispatch();
@@ -34,6 +34,12 @@ const Header = () => {
       setOldTimer(setTimeout(() => dispatch(changeSearchTerm(newInputVal)), 500));
    }
 
+
+   // nav for mobile
+   const { pathname } = useLocation();
+   const { closed: leftNavClosed } = useAppSelector(state => state.leftNav);
+
+   const handleOpen = () => dispatch(changeLeftNavPos(!leftNavClosed));
 
    return (
       <>
@@ -71,14 +77,13 @@ const Header = () => {
 
                   <VerticalLine />
 
-                  <div className="cart-section relative cursor-pointer" onClick={toggleSRL} title="my read list">
+                  {/* <div className="cart-section relative cursor-pointer" onClick={toggleSRL} title="my read list">
                      <Link to='/dash/reads'>
                         <AiOutlineRead className='text-2xl mt-[2px]' />
                         <Badge count={user?.counters.reads || 0} />
                      </Link>
-                  </div>
+                  </div> */}
 
-                  <VerticalLine />
 
                   <div className="account-section relative cursor-pointer">
                      {
@@ -100,6 +105,19 @@ const Header = () => {
                            </div>
                         )
                      }
+                  </div>
+                  {/* three dots */}
+                  <div className={`${pathname.startsWith('/dash') ? 'flex' : 'hidden'} gap-[15px] md:hidden`}>
+                     <VerticalLine />
+                     <div onClick={handleOpen} className="cursor-pointer flex items-center">
+                        {
+                           leftNavClosed ? (
+                              <FaBars className='text-2xl' />
+                           ) : (
+                              <FaTimes className='text-3xl' />
+                           )
+                        }
+                     </div>
                   </div>
                </div>
             </div>

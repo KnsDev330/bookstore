@@ -23,7 +23,7 @@ const DashMyReadList = () => {
          </div>
 
          {isFetching ? (
-            <div className="flex gap-3 flex-wrap">
+            <div className="flex gap-3 flex-wrap mt-5">
                <Shimmer />
                <Shimmer />
                <Shimmer />
@@ -50,7 +50,7 @@ const DashMyReadList = () => {
                   </div>
                ) : (
                   <div className="flex flex-col gap-3 my-5">
-                     {data!.data.map((read) => <MyRead read={read} refetch={refetch} />)}
+                     {data!.data.map((read) => <MyRead read={read} refetch={refetch} key={read._id} />)}
                   </div>
                )}
 

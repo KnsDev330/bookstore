@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { ChangeEvent, Dispatch, FC, SetStateAction, useEffect } from "react";
+import { ChangeEvent, Dispatch, FC, SetStateAction } from "react";
 import { ESortOrder } from "../../redux/features/interfaces";
 
 interface Props {
@@ -13,9 +13,6 @@ interface Props {
 }
 
 const SortBy: FC<Props> = ({ className, utils: { sortBy, sortOrder, setSortBy, setSortOrder } }) => {
-
-   useEffect(() => console.log('sortOrder', sortOrder), [sortOrder]);
-   useEffect(() => console.log('sortBy', sortBy), [sortBy]);
 
    const setValues = (e: ChangeEvent<HTMLSelectElement>): void => {
       const v = e.target.value.split("::");

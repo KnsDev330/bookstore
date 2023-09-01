@@ -7,11 +7,13 @@ interface Props {
    iconRight?: JSX.Element;
    className?: string;
    isLoading?: boolean;
+   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-const Button: FC<Props> = ({ text, variant, iconRight, className, isLoading }): JSX.Element => {
+const Button: FC<Props> = ({ text, variant, iconRight, className, isLoading, onClick }): JSX.Element => {
    return (
       <button
+         onClick={onClick}
          disabled={isLoading}
          className={` ${className || ''}
          flex items-center justify-center px-5 py-3 rounded-full text-white font-medium text-sm duration-300 relative group h-11

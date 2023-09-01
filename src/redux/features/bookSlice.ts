@@ -2,22 +2,28 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 interface IInitialState {
    searchTerm: string;
+   mobileSearchTerm: string;
 }
 const initialState: IInitialState = {
-   searchTerm: ''
+   searchTerm: '',
+   mobileSearchTerm: '',
 };
 
 const bookSlice = createSlice({
-   name: 'book ',
+   name: 'book',
    initialState,
    reducers: {
-      changeSearchTerm: (state, action: PayloadAction<string>) => {
+      changeSearchTerm: (state, action: PayloadAction<string>): IInitialState => {
          return { ...state, searchTerm: action.payload };
+      },
+      changeMobileSearchTerm: (state, action: PayloadAction<string>): IInitialState => {
+         return { ...state, mobileSearchTerm: action.payload };
       }
    },
 });
 
 export const {
-   changeSearchTerm
+   changeSearchTerm,
+   changeMobileSearchTerm
 } = bookSlice.actions;
 export default bookSlice.reducer;

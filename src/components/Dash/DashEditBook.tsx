@@ -20,7 +20,6 @@ const DashEditBook: FC = (): JSX.Element => {
    const [updateBook, { error, isError, isSuccess, data, isLoading }] = useUpdateBookMutation();
 
    const onSubmit = (data: IAddBookInput) => {
-      console.log(data);
       void updateBook({ id: id!, data: { ...data, publicationDate: Number(data.publicationDate) } });
    };
 

@@ -31,7 +31,6 @@ const Register: FC<Props> = ({ className }) => {
 
    const navigate = useNavigate();
    const onSubmit = ({ name, email, password }: RegisterFormInputs) => {
-      console.log({ name, email, password });
       dispatch(createUser({ name, email, password }))
    };
 

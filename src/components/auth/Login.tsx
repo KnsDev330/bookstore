@@ -24,12 +24,10 @@ const Login: FC<Props> = ({ className }) => {
    } = useForm<LoginFormInputs>();
 
    const { user, isLoading, error } = useAppSelector((state) => state.user);
-   useEffect(() => console.log('error', error), [error]);
    const dispatch = useAppDispatch();
 
    const navigate = useNavigate();
    const onSubmit = (data: LoginFormInputs) => {
-      console.log(data);
       dispatch(loginUser({ email: data.email, password: data.password }))
    };
 

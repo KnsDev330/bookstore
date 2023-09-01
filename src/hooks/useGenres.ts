@@ -1,16 +1,17 @@
-import { useEffect, useState } from "react";
-import { IBook } from "../interfaces/interfaces";
+import { useState } from "react";
 
-const useGenres = (books: IBook[]): { genres: string[] } => {
-   const [genres, setGenres] = useState<string[]>([]);
-
-   useEffect(() => {
-      const uniqueGenres = books.reduce((unique: string[], book) => {
-         if (!unique.includes(book.genre)) unique.push(book.genre);
-         return unique;
-      }, []);
-      setGenres(uniqueGenres);
-   }, [books]);
+/* TODO: make genres dynamic */
+const useGenres = (): { genres: string[] } => {
+   // eslint-disable-next-line @typescript-eslint/no-unused-vars
+   const [genres, _setGenres] = useState<string[]>([
+      'Romance',
+      'Horror',
+      'Historical Fiction',
+      'Adventure',
+      'Fiction',
+      'Philosophical Fiction',
+      'Fantasy'
+   ]);
 
    return { genres };
 }

@@ -180,3 +180,25 @@ html {
       background-position: -200% 0;
    }
 }
+
+
+
+/* start left bar for mobile */
+@media screen and (max-width: 767px) {
+   .dashboard .dash_links {
+      width: 100%;
+      height: 100vh;
+      top: 0;
+      z-index: 5;
+      background: #fff;
+      padding-top: 20px;
+      position: absolute;
+      left: -100vw;
+   }
+
+   .dashboard .dash_links.active {
+      left: 0;
+   }
+}
+
+/* end left bar for mobile */

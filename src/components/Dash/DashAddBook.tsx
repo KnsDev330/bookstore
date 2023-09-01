@@ -15,11 +15,8 @@ const DashAddBook: FC = (): JSX.Element => {
 
    const { setValue, register, handleSubmit, formState: { errors }, reset } = useForm<IAddBookInput>();
    const [postBook, { isLoading, isError, error, isSuccess, data }] = useCreateBookMutation();
-   useEffect(() => console.log('data', data), [data]);
-   useEffect(() => console.log('error', error), [error]);
 
    const onSubmit = (data: IAddBookInput) => {
-      console.log(data);
       void postBook({ ...data, publicationDate: Number(data.publicationDate) });
    };
 
